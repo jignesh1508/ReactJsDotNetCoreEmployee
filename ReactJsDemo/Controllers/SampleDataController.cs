@@ -73,23 +73,7 @@ namespace ReactJsDemo.Controllers
             _employeeService.Create(employee);
         }
 
-        //[HttpDelete("[id)")]
-        //public IEnumerable<Employee> DeleteEmployee(int id)
-        //{
-        //    return employees.Where(emp => emp.Id != id);
-        //}
-
-        //[HttpPut("id")]
-        //public IActionResult PutEmployee(int id, Employee employee)
-        //{
-        //    if (id != employee.Id)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    return NotFound();
-        //}
-
+       
         public class WeatherForecast
         {
             public string DateFormatted { get; set; }

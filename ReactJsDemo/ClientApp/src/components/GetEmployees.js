@@ -17,7 +17,7 @@ export class GetEmployees extends Component {
 
     async populateEmployees() {
 
-        const response = await fetch('api/SampleData/GetEmployees');
+        const response = await fetch('api/Employee/');
         const employeeData = await response.json();
 
         this.setState({ employees: employeeData, loading: false });

@@ -26,16 +26,11 @@ export class AddEmployee extends Component {
 
 
      async initialize() {
-        var id = this.props.match.params["id"]; //if grather than 0 means edit or crate
+         var id = this.props.match.params["id"]; //if null or undefine means request for create employee
 
-        
          if (id === null || id === undefined) {
 
-
              this.setState = { title: "Create", employee: new Employee, loading: false };
-
-             alert(this.state.loading);
-
         }
          else {
 
@@ -45,18 +40,7 @@ export class AddEmployee extends Component {
         }
     }
 
-    render() {
-
-        let contents = this.state.loading ? <p><em>Loading...</em></p> : this.renderCreateForm();
-
-        return (<div>
-            <h1>{this.state.title}</h1>
-            <h3>Employees</h3>
-            <hr />
-            {contents}
-        </div>);
-    }
-
+    
     async handleSave(e) {
          e.preventDefault();
 
@@ -65,7 +49,6 @@ export class AddEmployee extends Component {
 
          if (this.state.employee.id)
          {
-             alert("Edit" + this.state.employee.id + " " + data);
              var editResponse = await fetch('api/Employee/' + this.state.employee.id, { method: 'PUT', body: data });
              this.props.history.push("/get-employees"); //redirect to get-employees route
          }
@@ -101,23 +84,20 @@ export class AddEmployee extends Component {
                 <div className="form-group row">
                     <label className="control-label col-md-12" htmlFor="name">First Name</label>
                     <div className="col-md-4">
-                        <input type="text" name="firstName" defaulVvalue={this.state.employee.firstName}  className="form-control" required />
+                        <input type="text" name="firstName" value={this.state.employee.firstName} className="form-control" required />
                     </div>
-                       
                    
                 </div>
                 <div className="form-group row">
                     <label className="control-label col-md-12" htmlFor="name">Last Name</label>
                     <div className="col-md-4">
-                        <input type="text" name="lastName" defaulVvalue={this.state.employee.lastName}  className="form-control" required />
+                        <input type="text" name="lastName" value={this.state.employee.lastName}  className="form-control" required />
                     </div>
-
-
                 </div>
                 <div className="form-group row">
                     <label className="control-label col-md-12" htmlFor="salary">Salary</label>
                     <div className="col-md-4">
-                        <input type="text" name="salary" defaulVvalue={this.state.employee.salary}className="form-control" required />
+                        <input type="text" name="salary" defaultVvalue={this.state.employee.salary} className="form-control" required />
                     </div>
                 </div>
              
@@ -129,5 +109,17 @@ export class AddEmployee extends Component {
             </form>
 
             );
+    }
+
+    render() {
+
+        let contents = this.state.loading ? <p><em>Loading...</em></p> : this.renderCreateForm();
+
+        return (<div>
+            <h1>{this.state.title}</h1>
+            <h3>Employees</h3>
+            <hr />
+            {contents}
+        </div>);
     }
 }
