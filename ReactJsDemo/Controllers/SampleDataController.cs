@@ -11,6 +11,9 @@ namespace ReactJsDemo.Controllers
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {
+        /// <summary>
+        /// 
+        /// </summary>
         private readonly IEmployeeService _employeeService;
 
         public SampleDataController(IEmployeeService employeeService)
