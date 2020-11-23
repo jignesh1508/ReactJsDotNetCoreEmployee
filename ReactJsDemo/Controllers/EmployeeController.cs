@@ -29,18 +29,27 @@ namespace ReactJsDemo.Controllers
         [HttpGet("{id}")]
         public Employee Get(Guid id)
         {
+            if(id==Guid.Empty)
+            {
+                return null;
+            }
+
             return _employeeService.GetById(id);
         }
 
         // POST api/<controller>
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post(Employee employee)
         {
+            employee.Id = Guid.NewGuid();
+            employee.DepartmentId = new Guid("039777f2-101c-49e7-9a1b-3627ca5d5327"); //Hard Coded for time being
+
+            _employeeService.Create(employee);
         }
 
         // PUT api/<controller>/5
         [HttpPut("{id}")]
-        public void Put(Guid id, [FromBody]Employee employee)
+        public void Put(Guid id,Employee employee)
         {
             var employeeToEdit = _employeeService.GetById(id);
 

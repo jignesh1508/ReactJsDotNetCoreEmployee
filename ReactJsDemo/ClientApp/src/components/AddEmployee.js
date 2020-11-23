@@ -49,12 +49,12 @@ export class AddEmployee extends Component {
 
          if (this.state.employee.id)
          {
-             var editResponse = await fetch('api/Employee/' + this.state.employee.id, { method: 'PUT', body: data });
+             await fetch('api/Employee/' + this.state.employee.id, { method: 'PUT', body: data });
              this.props.history.push("/get-employees"); //redirect to get-employees route
          }
          else {
 
-             var createResponse = fetch('api/SampleData/AddEmployee/', { method: 'POST', body: data });
+             fetch('api/Employee/', { method: 'POST', body: data });
 
              //This will refresh page after we add new employee
              this.setState = {

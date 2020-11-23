@@ -61,6 +61,7 @@ export class GetEmployees extends Component {
     handleEdit(id) {
         this.props.history.push("/employees/edit/" + id);
     }
+
     handleDelete(id) {
         if (!window.confirm("Do you want to delete?")) {
             return;
@@ -86,7 +87,7 @@ export class GetEmployees extends Component {
 
         return (
             <div>
-                <h1>Employee Details</h1>
+                <h3>Employee Details</h3>
                 {contents}
             </div>
         );
