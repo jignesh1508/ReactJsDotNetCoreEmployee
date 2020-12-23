@@ -32,6 +32,7 @@ namespace ReactJsDemo
             //DI
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddTransient<IEmployeeService, EmployeeService>();
+            services.AddTransient<IDepartmentService, DepartmentService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 

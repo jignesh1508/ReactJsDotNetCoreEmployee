@@ -16,7 +16,6 @@ export class GetEmployees extends Component {
     }
 
     async populateEmployees() {
-
         const response = await fetch('api/Employee/');
         const employeeData = await response.json();
 
@@ -32,7 +31,7 @@ export class GetEmployees extends Component {
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Salary</th>
-                        <th>Department</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,7 +41,6 @@ export class GetEmployees extends Component {
                                 <td>{employee.firstName}</td>
                                 <td>{employee.lastName}</td>
                                 <td>{employee.salary}</td>
-
 
                                 <td>
                                     <button className="btn btn-success" onClick={(id) => this.handleEdit(employee.id)}> Edit</button>&nbsp;

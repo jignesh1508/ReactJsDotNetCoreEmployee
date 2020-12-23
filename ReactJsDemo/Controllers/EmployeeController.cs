@@ -25,7 +25,7 @@ namespace ReactJsDemo.Controllers
             return _employeeService.GetAllEmployee();
         }
 
-        // GET api/<controller>/5
+        // GET api/<controller>/6
         [HttpGet("{id}")]
         public Employee Get(Guid id)
         {
@@ -42,7 +42,7 @@ namespace ReactJsDemo.Controllers
         public void Post(Employee employee)
         {
             employee.Id = Guid.NewGuid();
-            employee.DepartmentId = new Guid("039777f2-101c-49e7-9a1b-3627ca5d5327"); //Hard Coded for time being
+            employee.DepartmentId = employee.DepartmentId; //Hard Coded for time being
 
             _employeeService.Create(employee);
         }
@@ -56,6 +56,7 @@ namespace ReactJsDemo.Controllers
             employeeToEdit.FirstName = employee.FirstName;
             employeeToEdit.LastName = employee.LastName;
             employeeToEdit.Salary = employee.Salary;
+            employeeToEdit.DepartmentId = employee.DepartmentId;
 
             _employeeService.Update(employeeToEdit);
         }
